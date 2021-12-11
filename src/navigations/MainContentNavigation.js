@@ -3,7 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useContext} from 'react';
 import Animated from 'react-native-reanimated';
 import {AuthenticationContext} from '../contexts/AuthenticationProvider';
-import AuthenticationStack from './AuthenticationStack';
+import {AuthenticationStack} from './AuthenticationStack';
 import TabNavigation from './TabNavigation';
 
 const ManStack = createNativeStackNavigator();

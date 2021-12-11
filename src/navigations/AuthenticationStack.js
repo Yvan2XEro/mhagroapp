@@ -3,10 +3,10 @@ import React, {useState, useEffect, useContext} from 'react';
 import auth from '@react-native-firebase/auth';
 import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import LoginScreen from '../screens/Auth/LoginScreen';
-import StartAuthScreen from '../screens/Auth/StartAuthScreen';
 import RegisterScreen from '../screens/Auth/RegisterScreen';
 import {AuthenticationContext} from '../contexts/AuthenticationProvider';
 import {AppHeader} from '../components/layouts/Headers';
+import StartAuthScreen from '../screens/Auth/StartAuthScreen';
 
 const AuthStack = createNativeStackNavigator();
 const AppStack = createNativeStackNavigator();
@@ -23,7 +23,7 @@ export const AuthenticationStack = () => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     GoogleSignin.configure({
       webClientId:
-        '932172823286-2ctrg8snc8h9o1fuom7bt45jdve6tb6e.apps.googleusercontent.com',
+        '932172823286-uskvkfscbdtlo1lkcfcot8462gee0htr.apps.googleusercontent.com',
     });
     return () => subscriber; // unsubscribe on unmount
   }, []);
@@ -32,7 +32,7 @@ export const AuthenticationStack = () => {
   if (!user)
     return (
       <AuthStack.Navigator
-        initialRouteName="Authentication"
+        initialRouteName="AuthenticationHome"
         screenOptions={{
           header: ({navigation, route, options}) => (
             <AppHeader
@@ -42,7 +42,7 @@ export const AuthenticationStack = () => {
             />
           ),
         }}>
-        {/* <AuthStack.Screen
+        <AuthStack.Screen
           name="AuthenticationHome"
           options={{title: 'Authentication'}}
           component={StartAuthScreen}
@@ -56,7 +56,7 @@ export const AuthenticationStack = () => {
           options={{title: 'Register'}}
           name="RegisterScreen"
           component={RegisterScreen}
-        /> */}
+        />
       </AuthStack.Navigator>
     );
 };
