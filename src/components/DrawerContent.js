@@ -134,7 +134,10 @@ const DrawerContent = props => {
               />
             )}
             label="Logout"
-            onPress={() => logout()}
+            onPress={() => {
+              logout();
+              props.navigation.navigate('HomeScreen');
+            }}
           />
         )}
       </Drawer.Section>

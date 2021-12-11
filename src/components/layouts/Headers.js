@@ -14,8 +14,11 @@ export const AppHeader = ({navigation, route, title}) => {
         size={30}
         color="#fff"
       />
-      <View style={{width: '100%'}}>
+      <View>
         <Text style={[styles.headerTitle, GStyles.textWhite]}>{title}</Text>
+      </View>
+      <View style={{marginLeft: 'auto'}}>
+        <MaterialIcons name="notifications" size={30} color="#fff" />
       </View>
     </View>
   );
