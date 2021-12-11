@@ -1,6 +1,6 @@
 import {DrawerItem} from '@react-navigation/drawer';
 import React, {useContext} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Avatar, Caption, Drawer, Title} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -14,7 +14,7 @@ const DrawerContent = props => {
   const {logout, user} = useContext(AuthenticationContext);
   return (
     <LinearGradient
-      colors={['#fff', theme.colors.primary]}
+      colors={[theme.colors.primary, theme.colors.primary]}
       start={{x: 1, y: 0}}
       end={{x: 1, y: 1}}
       style={styles.container}>
@@ -30,12 +30,10 @@ const DrawerContent = props => {
         />
         {user != null ? (
           <View>
-            <Title style={{color: theme.colors.primary}}>
+            <Title style={{color: '#fff'}}>
               {user.displayName !== null ? user.displayName : user.email}
             </Title>
-            <Caption style={{color: theme.colors.primary}}>
-              Agronome super qualifie
-            </Caption>
+            <Caption style={{color: '#fff'}}>Agronome super qualifie</Caption>
           </View>
         ) : (
           <View
@@ -44,101 +42,97 @@ const DrawerContent = props => {
               flexDirection: 'column',
               color: theme.colors.primary,
             }}>
-            <Title style={{color: theme.colors.primary}}>Anonymous</Title>
+            <Title style={{color: '#fff'}}>Anonymous</Title>
           </View>
         )}
       </View>
       <Drawer.Section style={styles.menuWrapper} {...props}>
-        <DrawerItem
-          labelStyle={{color: theme.colors.primary}}
-          icon={({size}) => (
-            <Ionicons
-              size={size}
-              color={theme.colors.primary}
-              name="home-outline"
-            />
-          )}
-          label="Home"
-          onPress={() => props.navigation.navigate('HomeApp')}
-        />
+        <TouchableOpacity style={styles.drawerItem}>
+          <DrawerItem
+            labelStyle={styles.labelStyle}
+            icon={({size}) => (
+              <Ionicons size={size} color="#FFF" name="home-outline" />
+            )}
+            label="Home"
+            onPress={() => props.navigation.navigate('HomeApp')}
+          />
+        </TouchableOpacity>
         {user && (
           <>
-            <DrawerItem
-              labelStyle={{color: theme.colors.primary}}
-              icon={({size}) => (
-                <AntDesign
-                  size={size}
-                  color={theme.colors.primary}
-                  name="user"
-                />
-              )}
-              label="My profile"
-              onPress={() =>
-                props.navigation.navigate('App', {screen: 'Profile'})
-              }
-            />
-            <DrawerItem
-              labelStyle={{color: theme.colors.primary}}
-              icon={({size}) => (
-                <AntDesign
-                  size={size}
-                  color={theme.colors.primary}
-                  name="barschart"
-                />
-              )}
-              label="Product prices"
-              onPress={() =>
-                props.navigation.navigate('App', {
-                  screen: 'ProductsPricesScreen',
-                })
-              }
-            />
+            <TouchableOpacity style={styles.drawerItem}>
+              <DrawerItem
+                labelStyle={styles.labelStyle}
+                icon={({size}) => (
+                  <AntDesign size={size} color="#FFF" name="user" />
+                )}
+                label="My profile"
+                onPress={() =>
+                  props.navigation.navigate('App', {screen: 'Profile'})
+                }
+              />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.drawerItem}>
+              <DrawerItem
+                labelStyle={styles.labelStyle}
+                icon={({size}) => (
+                  <AntDesign size={size} color="#FFF" name="barschart" />
+                )}
+                label="Product prices"
+                onPress={() =>
+                  props.navigation.navigate('App', {
+                    screen: 'ProductsPricesScreen',
+                  })
+                }
+              />
+            </TouchableOpacity>
           </>
         )}
         {!user && (
-          <DrawerItem
-            labelStyle={{color: theme.colors.primary}}
-            icon={({size}) => (
-              <Entypo size={size} color={theme.colors.primary} name="login" />
-            )}
-            label="Login && Register"
-            onPress={() => props.navigation.navigate('Authentication')}
-          />
-        )}
-        <DrawerItem
-          labelStyle={{color: theme.colors.primary}}
-          icon={({size}) => (
-            <Entypo size={size} color={theme.colors.primary} name="help" />
-          )}
-          label="Help"
-        />
-        <DrawerItem
-          labelStyle={{color: theme.colors.primary}}
-          icon={({size}) => (
-            <FontAwesome
-              size={size}
-              color={theme.colors.primary}
-              name="exclamation-circle"
+          <TouchableOpacity style={styles.drawerItem}>
+            <DrawerItem
+              labelStyle={styles.labelStyle}
+              icon={({size}) => (
+                <Entypo size={size} color="#FFF" name="login" />
+              )}
+              label="Login && Register"
+              onPress={() => props.navigation.navigate('Authentication')}
             />
-          )}
-          label="About"
-        />
-        {user && (
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity style={styles.drawerItem}>
           <DrawerItem
-            labelStyle={{color: theme.colors.primary}}
-            icon={({size}) => (
-              <MaterialCommunityIcons
-                size={size}
-                color={theme.colors.primary}
-                name="logout-variant"
-              />
-            )}
-            label="Logout"
-            onPress={() => {
-              logout();
-              props.navigation.navigate('HomeScreen');
-            }}
+            labelStyle={styles.labelStyle}
+            icon={({size}) => <Entypo size={size} color="#FFF" name="help" />}
+            label="Help"
           />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.drawerItem}>
+          <DrawerItem
+            labelStyle={styles.labelStyle}
+            icon={({size}) => (
+              <FontAwesome size={size} color="#FFF" name="exclamation-circle" />
+            )}
+            label="About"
+          />
+        </TouchableOpacity>
+        {user && (
+          <TouchableOpacity style={styles.drawerItem}>
+            <DrawerItem
+              labelStyle={styles.labelStyle}
+              icon={({size}) => (
+                <MaterialCommunityIcons
+                  size={size}
+                  color="#FFF"
+                  name="logout-variant"
+                />
+              )}
+              label="Logout"
+              onPress={() => {
+                logout();
+                props.navigation.navigate('HomeScreen');
+              }}
+            />
+          </TouchableOpacity>
         )}
       </Drawer.Section>
       <View style={styles.footer}></View>
@@ -161,5 +155,14 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 0.3,
+  },
+  drawerItem: {
+    marginHorizontal: 10,
+    borderRadius: 5,
+    marginTop: 3,
+  },
+  labelStyle: {
+    margin: 0,
+    color: '#fff',
   },
 });

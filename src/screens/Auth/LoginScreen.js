@@ -3,11 +3,14 @@ import {View, TouchableOpacity, StyleSheet} from 'react-native';
 import {Button, Text, TextInput} from 'react-native-paper';
 import {theme} from '../../../styles';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {
   AuthenticationContext,
   GOOGLE,
 } from '../../contexts/AuthenticationProvider';
 import {regex} from './RegisterScreen';
+import {Icon} from 'react-native-elements';
+import Fp from '../../assets/Fp';
 
 const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -39,7 +42,9 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <View style={{padding: 20}}>
-      <Text style={styles.title}>Login</Text>
+      <View style={{marginBottom: 15}}>
+        <Fp width={400} height={100} style={{alignSelf: 'center'}} />
+      </View>
       {error != '' && (
         <View
           style={{
@@ -55,29 +60,72 @@ const LoginScreen = ({navigation}) => {
           </Text>
         </View>
       )}
-      <TextInput
-        label="Email"
-        returnKeyType="next"
-        value={email}
-        style={styles.input}
-        onChangeText={text => setEmail(text)}
-        error={email != '' && !regex.test(email)}
-        errorText={'Invalid email!'}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <TextInput
-        label="Password"
-        returnKeyType="done"
-        value={password}
-        style={styles.input}
-        onChangeText={text => setPassword(text)}
-        error={password != '' && password.length < 6}
-        errorText={password}
-        secureTextEntry
-      />
+      <View
+        style={{
+          backgroundColor: '#fff',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
+        <View>
+          <MaterialIcons
+            name="person"
+            style={{
+              zIndex: 2,
+              position: 'absolute',
+              left: 10,
+              top: -17,
+              color: theme.colors.primary,
+            }}
+            size={40}
+          />
+        </View>
+        <TextInput
+          label="Email"
+          returnKeyType="next"
+          placeholderTextColor={theme.colors.primary}
+          value={email}
+          style={[styles.input]}
+          onChangeText={text => setEmail(text)}
+          error={email != '' && !regex.test(email)}
+          errorText={'Invalid email!'}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+        />
+      </View>
+      <View
+        style={{
+          backgroundColor: '#fff',
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: 10,
+        }}>
+        <View>
+          <MaterialIcons
+            name="person"
+            style={{
+              zIndex: 2,
+              position: 'absolute',
+              left: 10,
+              top: -17,
+              color: theme.colors.primary,
+            }}
+            size={40}
+          />
+        </View>
+        <TextInput
+          label="Password"
+          returnKeyType="done"
+          placeholderTextColor={theme.colors.primary}
+          value={password}
+          style={styles.input}
+          onChangeText={text => setPassword(text)}
+          error={password != '' && password.length < 6}
+          errorText={password}
+          secureTextEntry
+        />
+      </View>
       <View style={styles.forgotPassword}>
         <TouchableOpacity>
           <Text style={styles.forgot}>Forgot your password?</Text>
@@ -139,9 +187,11 @@ export const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
   input: {
-    marginTop: 10,
+    backgroundColor: '#fff',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
+    flex: 1,
+    paddingLeft: 38,
   },
   title: {fontSize: 31, fontWeight: 'bold', color: theme.colors.primary},
 });

@@ -14,7 +14,7 @@ export const AppHeader = ({navigation, route, title}) => {
         size={30}
         color="#fff"
       />
-      <View>
+      <View style={{flex: 2}}>
         <Text style={[styles.headerTitle, GStyles.textWhite]}>{title}</Text>
       </View>
       <View style={{marginLeft: 'auto'}}>
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     width: '100%',
     paddingLeft: 16,
+    paddingRight: 10,
     height: 50,
     flexDirection: 'row',
     alignItems: 'center',
