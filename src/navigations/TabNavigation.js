@@ -9,6 +9,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import ChatListScreen from '../screens/ChatListScreen';
+import {AppHeader} from '../components/layouts/Headers';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -69,7 +70,6 @@ export default function TabNavigation() {
           overflow: 'hidden',
           width: windowWidth,
         },
-        headerShown: false,
       }}>
       <AppTab.Screen
         name="HomeScreen"
@@ -80,6 +80,9 @@ export default function TabNavigation() {
           tabBarIcon: ({focused, size}) => (
             <TabIcon name="home" focused={focused} size={size*1.3} />
           ),
+          header: ({navigation, route}) => (
+            <AppHeader navigation={navigation} route={route} title="Home" />
+          ),
         }}
       />
       <AppTab.Screen
@@ -89,6 +92,13 @@ export default function TabNavigation() {
           headerTitle: 'Agronomes qualifies',
           tabBarIcon: ({focused, size}) => (
             <TabIcon name="users" focused={focused} size={size*1.3} />
+          ),
+          header: ({navigation, route}) => (
+            <AppHeader
+              navigation={navigation}
+              route={route}
+              title="Agronomes"
+            />
           ),
         }}
       />
@@ -104,6 +114,9 @@ export default function TabNavigation() {
               focused={focused}
               size={size*1.3}
             />
+          ),
+          header: ({navigation, route}) => (
+            <AppHeader navigation={navigation} route={route} title="Chats" />
           ),
         }}
       />
