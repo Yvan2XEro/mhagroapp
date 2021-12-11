@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Button} from 'react-native-paper';
 import LoginSvg from './../../assets/login.svg';
-const StartAuthScreen = () => {
+const StartAuthScreen = ({navigation}) => {
   return (
     <View style={{padding: 20}}>
       <View style={{alignItems: 'center'}}>
