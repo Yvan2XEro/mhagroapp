@@ -1,6 +1,6 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import {theme} from '../../styles';
 import AgronomesListScreen from '../screens/AgronomesListScreen';
 import HomeScreen from '../screens/HomeScreen';
@@ -11,13 +11,15 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import ChatListScreen from '../screens/ChatListScreen';
 import {AppHeader} from '../components/layouts/Headers';
 
+const windowWidth = Dimensions.get('window').width;
+
 function TabIcon({focused, name, size, type = null}) {
   if (type === null)
     return (
       <View style={focused ? tabStyle.active : {}}>
         <Entypo
           name={name}
-          color={focused ? theme.colors.primary : '#fff'}
+          color={'#fff'}
           size={size}
         />
       </View>
@@ -27,7 +29,7 @@ function TabIcon({focused, name, size, type = null}) {
       <View style={focused ? tabStyle.active : {}}>
         <MaterialCommunityIcons
           name={name}
-          color={focused ? theme.colors.primary : '#fff'}
+          color={'#fff'}
           size={size}
         />
       </View>
@@ -37,7 +39,7 @@ function TabIcon({focused, name, size, type = null}) {
       <View style={focused ? tabStyle.active : {}}>
         <MaterialIcons
           name={name}
-          color={focused ? theme.colors.primary : '#fff'}
+          color={'#fff'}
           size={size}
         />
       </View>
@@ -47,7 +49,7 @@ function TabIcon({focused, name, size, type = null}) {
       <View style={focused ? tabStyle.active : {}}>
         <Ionicons
           name={name}
-          color={focused ? theme.colors.primary : '#fff'}
+          color={'#fff'}
           size={size}
         />
       </View>
@@ -66,6 +68,7 @@ export default function TabNavigation() {
           backgroundColor: theme.colors.primary,
           borderTopColor: '#fff',
           overflow: 'hidden',
+          width: windowWidth,
         },
       }}>
       <AppTab.Screen
@@ -75,7 +78,7 @@ export default function TabNavigation() {
           tabBarShowLabel: false,
           headerTitle: 'Produits agricoles',
           tabBarIcon: ({focused, size}) => (
-            <TabIcon name="home" focused={focused} size={size} />
+            <TabIcon name="home" focused={focused} size={size*1.3} />
           ),
           header: ({navigation, route}) => (
             <AppHeader navigation={navigation} route={route} title="Home" />
@@ -88,7 +91,7 @@ export default function TabNavigation() {
         options={{
           headerTitle: 'Agronomes qualifies',
           tabBarIcon: ({focused, size}) => (
-            <TabIcon name="users" focused={focused} size={size} />
+            <TabIcon name="users" focused={focused} size={size*1.3} />
           ),
           header: ({navigation, route}) => (
             <AppHeader
@@ -109,7 +112,7 @@ export default function TabNavigation() {
               type="Ionicons"
               name="chatbox-sharp"
               focused={focused}
-              size={size}
+              size={size*1.3}
             />
           ),
           header: ({navigation, route}) => (
@@ -122,14 +125,15 @@ export default function TabNavigation() {
 }
 const tabStyle = StyleSheet.create({
   active: {
-    backgroundColor: '#fff',
-    height: '130%',
     justifyContent: 'center',
-    marginBottom: 15,
+    alignItems: 'center',
     borderTopColor: '#fff',
-    paddingHorizontal: 10,
+    height: '100%',
+    display: 'flex',
+    width: windowWidth / 3,
     borderTopRightRadius: -200,
-    borderRadius: 100,
+    borderTopWidth: 4,
+    borderRadius: 4,
     overflow: 'hidden',
   },
 });
