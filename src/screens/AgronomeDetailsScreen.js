@@ -1,12 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Avatar, Card} from 'react-native-paper';
 import GStyles, {theme} from '../../styles';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const AgronomeDetailsScreen = ({route}) => {
+const AgronomeDetailsScreen = ({route, navigation}) => {
   return (
     <View>
       <ScrollView>
@@ -49,9 +50,17 @@ const AgronomeDetailsScreen = ({route}) => {
             </View>
           </Card>
           <View>
-            <View>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('ChatRoomScreen')}
+              style={{flexDirection: 'row', paddingRight: 10}}>
               <Text style={{fontSize: 17}}>Contacts</Text>
-            </View>
+              <Ionicons
+                style={{marginLeft: 'auto'}}
+                size={40}
+                color={theme.colors.primary}
+                name="chatbox-outline"
+              />
+            </TouchableOpacity>
             <View style={styles.contactWrapper}>
               <View style={[styles.contactItem, GStyles.flexRow]}>
                 <MaterialIcons name="phone" size={40} />
