@@ -21,7 +21,7 @@ const DrawerContent = props => {
       style={styles.container}>
       <View style={[styles.header, {marginTop: 2}]}>
         <Avatar.Image
-          size={60}
+          size={45}
           source={{
             uri:
               user && user.photoURL
@@ -37,13 +37,23 @@ const DrawerContent = props => {
             <Caption style={{color: '#fff'}}>Agronome super qualifie</Caption>
           </View>
         ) : (
-          <View
-            style={{
-              marginLeft: 15,
-              flexDirection: 'column',
-              color: theme.colors.primary,
-            }}>
-            <Title style={{color: '#fff'}}>Anonymous</Title>
+          <View style={{marginLeft: 10}}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 15,
+                fontFamily: 'ProductSans-Bold',
+              }}>
+              Hanniel TSASSE
+            </Text>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 12,
+                fontFamily: 'ProductSans-Regular',
+              }}>
+              Agronome super qualifie
+            </Text>
           </View>
         )}
       </View>
@@ -54,7 +64,7 @@ const DrawerContent = props => {
             icon={({size}) => (
               <MaterialIcons size={size} color="#FFF" name="home" />
             )}
-            label="Home"
+            label="Accueil"
             onPress={() => props.navigation.navigate('HomeApp')}
           />
         </TouchableOpacity>
@@ -93,7 +103,7 @@ const DrawerContent = props => {
               icon={({size}) => (
                 <MaterialIcons size={size} color="#FFF" name="login" />
               )}
-              label="Login && Register"
+              label="Authentification"
               onPress={() => props.navigation.navigate('Authentication')}
             />
           </TouchableOpacity>
@@ -104,7 +114,7 @@ const DrawerContent = props => {
             icon={({size}) => (
               <MaterialIcons size={size} color="#FFF" name="contact-support" />
             )}
-            label="Help"
+            label="Support"
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.drawerItem}>
@@ -113,7 +123,7 @@ const DrawerContent = props => {
             icon={({size}) => (
               <MaterialIcons size={size} color="#FFF" name="info" />
             )}
-            label="About"
+            label="A propos"
           />
         </TouchableOpacity>
         {user && (
@@ -150,6 +160,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 20,
     alignItems: 'center',
+    flexDirection: 'row',
   },
   menuWrapper: {
     flex: 0.6,
