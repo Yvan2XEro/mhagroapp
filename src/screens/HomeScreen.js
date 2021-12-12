@@ -15,6 +15,7 @@ import {AppHeader} from '../components/layouts/Headers';
 import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
+import ProductItem from '../components/ProductItem';
 // import ProductItem from '../components/ProductItem';
 
 const windowWidth = Dimensions.get('window').width;
@@ -207,97 +208,6 @@ const SearchBar = () => {
           </View>
         </View>
       </View>
-    </View>
-  );
-};
-
-// produits
-const ProductItem = ({product, farmerName, onPress}) => {
-  return (
-    <View
-      style={[
-        {
-          borderRadius: 5,
-          overflow: 'hidden',
-          marginBottom: 14,
-          marginHorizontal: 8,
-          width: '43%',
-          shadowColor: '#000',
-          elevation: 3,
-        },
-      ]}>
-      <TouchableOpacity
-        style={[
-          {
-            height: 180,
-            flex: 1,
-          },
-        ]}
-        onPress={onPress}>
-        {/* image du products */}
-        <Image
-          source={{uri: product.poster}}
-          style={{width: '100%', height: 130}}
-        />
-        {/* les informations a propos du produits */}
-        <View
-          style={[
-            {
-              height: 50,
-              backgroundColor: '#fff',
-              justifyContent: 'center',
-              width: '100%',
-              flexDirection: 'row',
-            },
-          ]}>
-          <View
-            style={[
-              {
-                width: '25%',
-                height: '100%',
-                justifyContent: 'center',
-                alignItems: 'center',
-                paddingLeft: 5,
-              },
-            ]}>
-            <Image
-              source={require('./../assets/images/Mark-Zuckerberg.jpg')}
-              style={{width: 30, height: 30, borderRadius: 100}}
-            />
-          </View>
-          {/* infos */}
-          <View
-            style={[
-              {
-                width: '80%',
-                height: '100%',
-                flexDirection: 'column',
-                paddingBottom: 2,
-                paddingLeft: 4,
-                justifyContent: 'center',
-              },
-            ]}>
-            <Text
-              style={[
-                style.productInfos,
-                {fontSize: 15, fontFamily: 'ProductSans-Medium'},
-              ]}>
-              {product.name}
-            </Text>
-            {farmerName && (
-              <Text
-                style={[
-                  style.productInfos,
-                  {
-                    fontFamily: 'ProductSans-Medium',
-                  },
-                ]}>
-                {farmerName}
-              </Text>
-            )}
-          </View>
-        </View>
-      </TouchableOpacity>
     </View>
   );
 };
