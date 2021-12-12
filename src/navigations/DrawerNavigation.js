@@ -11,7 +11,7 @@ const DrawerNavigation = () => {
     <Drawer.Navigator
       screenOptions={{
         drawerType: 'slide',
-        drawerStyle: {width: '75%'},
+        drawerStyle: {width: '62%'},
         overlayColor: 'transparent',
         headerShown: false,
         sceneContainerStyle: {backgroundColor: theme.colors.primary},

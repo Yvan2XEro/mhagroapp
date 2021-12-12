@@ -169,7 +169,6 @@ const styles = StyleSheet.create({
     flex: 0.3,
   },
   drawerItem: {
-    marginHorizontal: 10,
     borderRadius: 5,
     marginTop: 3,
   },
