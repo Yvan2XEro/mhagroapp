@@ -79,9 +79,7 @@ const DrawerContent = props => {
                 )}
                 label="Product prices"
                 onPress={() =>
-                  props.navigation.navigate('App', {
-                    screen: 'ProductsPricesScreen',
-                  })
+                  props.navigation.navigate('ProductsPricesScreen')
                 }
               />
             </TouchableOpacity>

@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import GStyles, {theme} from '../../../styles';
 
 export const AppHeader = ({navigation, route, title}) => {
@@ -24,7 +25,13 @@ export const AppHeader = ({navigation, route, title}) => {
   );
 };
 
-export const BackHeader = ({navigation, route, title, screen = null}) => {
+export const BackHeader = ({
+  navigation,
+  route,
+  title,
+  screen = null,
+  withOptions = false,
+}) => {
   return (
     <View style={styles.header}>
       <MaterialIcons
@@ -36,9 +43,12 @@ export const BackHeader = ({navigation, route, title, screen = null}) => {
         size={30}
         color="#fff"
       />
-      <View style={{width: '100%'}}>
+      <View style={{flex: 2}}>
         <Text style={[styles.headerTitle, GStyles.textWhite]}>{title}</Text>
       </View>
+      {withOptions && (
+        <SimpleLineIcons name="options-vertical" size={25} color="#fff" />
+      )}
     </View>
   );
 };

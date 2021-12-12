@@ -49,6 +49,9 @@ const AgronomeDetailsScreen = ({route}) => {
             </View>
           </Card>
           <View>
+            <View>
+              <Text style={{fontSize: 17}}>Contacts</Text>
+            </View>
             <View style={styles.contactWrapper}>
               <View style={[styles.contactItem, GStyles.flexRow]}>
                 <MaterialIcons name="phone" size={40} />

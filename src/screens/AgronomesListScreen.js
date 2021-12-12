@@ -66,11 +66,8 @@ const AgronomesListScreen = ({navigation}) => {
   }, []);
 
   const eventClickLister = userId => {
-    navigation.navigate('UserDetailsStack', {
-      screen: 'AgronomeDetailsScreen',
-      params: {
-        id: userId,
-      },
+    navigation.navigate('AgronomeDetailsScreen', {
+      id: userId,
     });
   };
 
