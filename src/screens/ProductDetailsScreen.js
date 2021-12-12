@@ -225,6 +225,7 @@ const ProductDetailsScreen = props => {
 
           {/* button */}
           <TouchableOpacity
+            onPress={() => props.navigation.navigate('ChatRoomScreen')}
             style={[style.btn, style.center, {alignSelf: 'center'}]}>
             <Text style={[style.btnText]}>Contacter</Text>
           </TouchableOpacity>
