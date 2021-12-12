@@ -28,3 +28,8 @@ export const theme = {
     error: '#f13a59',
   },
 };
+
+export const border = {
+  borderWidth: 1,
+  borderColor: '#000',
+}

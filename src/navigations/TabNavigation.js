@@ -80,9 +80,7 @@ export default function TabNavigation() {
           tabBarIcon: ({focused, size}) => (
             <TabIcon name="home" focused={focused} size={size*1.3} />
           ),
-          header: ({navigation, route}) => (
-            <AppHeader navigation={navigation} route={route} title="Home" />
-          ),
+          headerShown: false,
         }}
       />
       <AppTab.Screen
@@ -133,7 +131,6 @@ const tabStyle = StyleSheet.create({
     width: windowWidth / 3,
     borderTopRightRadius: -200,
     borderTopWidth: 4,
-    borderRadius: 4,
     overflow: 'hidden',
   },
 });

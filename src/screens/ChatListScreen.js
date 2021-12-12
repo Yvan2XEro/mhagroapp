@@ -1,12 +1,23 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 
 const ChatListScreen = () => {
   return (
     <View>
-      <Text>Chat</Text>
+      <ScrollView>
+        <Text>Chat</Text>
+      </ScrollView>
     </View>
   );
 };
+
+const OneChatContact = ({})=>{
+
+  return(
+    <View>
+      
+    </View>
+  )
+}
 
 export default ChatListScreen;
