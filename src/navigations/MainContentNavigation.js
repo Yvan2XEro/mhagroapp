@@ -2,11 +2,12 @@ import {useDrawerProgress} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useContext} from 'react';
 import Animated from 'react-native-reanimated';
+import {BackHeader} from '../components/layouts/Headers';
 import {AuthenticationContext} from '../contexts/AuthenticationProvider';
+import AgronomeDetailsScreen from '../screens/AgronomeDetailsScreen';
+import ProductsPricesScreen from '../screens/ProductsPricesScreen';
 import {AuthenticationStack} from './AuthenticationStack';
-import ProductsPricesStack from './ProductsPricesStack';
 import TabNavigation from './TabNavigation';
-import UserDetailsStackNavigation from './UserDetailsStackNavigation';
 
 const MainStack = createNativeStackNavigator();
 
@@ -31,10 +32,16 @@ export default function MainContentNavigation(props) {
     <Animated.View style={[{flex: 1, overflow: 'hidden'}, screenStyle]}>
       <MainStack.Navigator
         screenOptions={{
-          headerShown: false,
+          header: ({navigation, route, options}) => (
+            <BackHeader
+              navigation={navigation}
+              route={route}
+              title={options.title}
+            />
+          ),
         }}>
         <MainStack.Screen
-          options={{title: 'Home'}}
+          options={{title: 'Home', headerShown: false}}
           name="HomeApp"
           component={TabNavigation}
         />
@@ -44,12 +51,23 @@ export default function MainContentNavigation(props) {
           component={AuthenticationStack}
         />
         <MainStack.Screen
-          name="UserDetailsStack"
-          component={UserDetailsStackNavigation}
+          name="AgronomeDetailsScreen"
+          component={AgronomeDetailsScreen}
+          options={{title: 'DETAILS'}}
         />
         <MainStack.Screen
-          name="ProductsPricesStack"
-          component={ProductsPricesStack}
+          name="ProductsPricesScreen"
+          component={ProductsPricesScreen}
+          options={{
+            header: ({navigation, route}) => (
+              <BackHeader
+                navigation={navigation}
+                route={route}
+                title="PRODUCTS PRICES"
+                withOptions={true}
+              />
+            ),
+          }}
         />
       </MainStack.Navigator>
     </Animated.View>
