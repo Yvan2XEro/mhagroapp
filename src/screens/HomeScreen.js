@@ -14,7 +14,6 @@ import {AppHeader} from '../components/layouts/Headers';
 import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
-import ProductItem from '../components/ProductItem';
 
 const windowWidth = Dimensions.get('window').width;
 
