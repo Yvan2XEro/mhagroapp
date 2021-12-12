@@ -3,6 +3,7 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {BackHeader} from '../components/layouts/Headers';
 import AgronomeDetailsScreen from '../screens/AgronomeDetailsScreen';
+import ProductDetailsScreen from '../screens/ProductDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 const UserDetailsStackNavigation = () => {
@@ -21,6 +22,11 @@ const UserDetailsStackNavigation = () => {
         name="AgronomeDetailsScreen"
         component={AgronomeDetailsScreen}
         options={{title: 'DETAILS'}}
+      />
+      <Stack.Screen
+        name="ProductDetailsScreen"
+        component={ProductDetailsScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

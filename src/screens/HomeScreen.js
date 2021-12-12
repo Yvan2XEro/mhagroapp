@@ -134,6 +134,7 @@ const HomeScreen = ({navigation, route}) => {
   );
 };
 
+// search bar
 const SearchBar = () => {
   return (
     <View
