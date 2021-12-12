@@ -44,7 +44,16 @@ export const BackHeader = ({
         color="#fff"
       />
       <View style={{flex: 2}}>
-        <Text style={[styles.headerTitle, GStyles.textWhite]}>{title}</Text>
+        <Text
+          style={[
+            styles.headerTitle,
+            GStyles.textWhite,
+            {
+              fontFamily: 'ProductSans-Bold',
+            },
+          ]}>
+          {title}
+        </Text>
       </View>
       {withOptions && (
         <SimpleLineIcons name="options-vertical" size={25} color="#fff" />
@@ -64,7 +73,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerTitle: {
-    fontWeight: 'bold',
     fontSize: 20,
     letterSpacing: 1,
     marginLeft: 15,
