@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -10,12 +10,40 @@ import {
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {border, theme} from '../../styles';
+import firestore from '@react-native-firebase/firestore';
 import Entypo from 'react-native-vector-icons/Entypo';
+import Loader from '../components/Loader';
 
 const windowWidth = Dimensions.get('window').width;
 
-const ProductDetailsScreen = ({navigation}) => {
-  return (
+const ProductDetailsScreen = props => {
+  const [loading, setLoading] = useState(false);
+  const [product, setProduct] = useState({
+    name: '',
+    description: '',
+    quantity: 0,
+    categoryRef: '',
+    unity: '',
+    poster: 'src',
+  });
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const productSnapshot = await firestore()
+        .collection('products')
+        .doc(props.route.params.id)
+        .get();
+      setProduct({...productSnapshot.data(), id: productSnapshot.id});
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    loadData();
+  }, []);
+  return !loading ? (
     <View style={[{height: '100%', width: '100%'}]}>
       <View>
         {/* header */}
@@ -40,7 +68,7 @@ const ProductDetailsScreen = ({navigation}) => {
               name="arrow-back"
               color={'#fff'}
               size={29}
-              onPress={() => navigation.goBack()}
+              onPress={() => props.navigation.goBack()}
             />
             <MaterialIcons
               name="info-outline"
@@ -71,7 +99,7 @@ const ProductDetailsScreen = ({navigation}) => {
               ]}>
               <View>
                 <Image
-                  source={require('./../assets/images/Mark-Zuckerberg.jpg')}
+                  source={{uri: product.poster}}
                   style={{
                     height: '100%',
                     width: windowWidth,
@@ -127,7 +155,7 @@ const ProductDetailsScreen = ({navigation}) => {
                 <Text style={[style.bigText]}>Nom du produit</Text>
               </View>
               <View style={[{width: '80%', padding: 2}]}>
-                <Text style={[style.smallText]}>Tomate</Text>
+                <Text style={[style.smallText]}>{product.name}</Text>
               </View>
 
               {/* nom de la ville */}
@@ -197,12 +225,15 @@ const ProductDetailsScreen = ({navigation}) => {
 
           {/* button */}
           <TouchableOpacity
+            onPress={() => props.navigation.navigate('ChatRoomScreen')}
             style={[style.btn, style.center, {alignSelf: 'center'}]}>
             <Text style={[style.btnText]}>Contacter</Text>
           </TouchableOpacity>
         </View>
       </View>
     </View>
+  ) : (
+    <Loader />
   );
 };
 
