@@ -7,6 +7,7 @@ import {AuthenticationContext} from '../contexts/AuthenticationProvider';
 import AgronomeDetailsScreen from '../screens/AgronomeDetailsScreen';
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import ProductsListScreen from '../screens/ProductsListScreen';
+import ProductDetailsScreen from '../screens/ProductDetailsScreen';
 import ProductsPricesScreen from '../screens/ProductsPricesScreen';
 import {AuthenticationStack} from './AuthenticationStack';
 import TabNavigation from './TabNavigation';
@@ -56,6 +57,11 @@ export default function MainContentNavigation(props) {
           name="AgronomeDetailsScreen"
           component={AgronomeDetailsScreen}
           options={{title: 'DETAILS'}}
+        />
+        <MainStack.Screen
+          name="ProductDetailsScreen"
+          component={ProductDetailsScreen}
+          options={{headerShown: false}}
         />
         <MainStack.Screen
           name="ProductsPricesScreen"

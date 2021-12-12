@@ -23,11 +23,6 @@ const UserDetailsStackNavigation = () => {
         component={AgronomeDetailsScreen}
         options={{title: 'DETAILS'}}
       />
-      <Stack.Screen
-        name="ProductDetailsScreen"
-        component={ProductDetailsScreen}
-        options={{headerShown: false}}
-      />
     </Stack.Navigator>
   );
 };
