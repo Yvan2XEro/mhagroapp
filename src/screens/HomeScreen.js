@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component, useEffect, useState} from 'react';
 import {
   View,
@@ -14,6 +15,7 @@ import {AppHeader} from '../components/layouts/Headers';
 import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
+// import ProductItem from '../components/ProductItem';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -100,16 +102,21 @@ const HomeScreen = ({navigation, route}) => {
                     alignItems: 'center',
                     flexDirection: 'row',
                     width: windowWidth,
-                    paddingLeft: 6,
-                    paddingRight: 6,
-                    marginBottom: 7,
+                    paddingHorizontal: 12,
+                    marginVertical: 8,
                   },
                 ]}>
-                <Text style={[{fontSize: 19, fontWeight: 'bold'}]}>
-                  Find Fresh Fruits
+                <Text
+                  style={[
+                    {
+                      fontSize: 16,
+                      fontFamily: 'ProductSans-Bold',
+                    },
+                  ]}>
+                  Trouver des fruits frais
                 </Text>
                 <MoreButton
-                  text="View All"
+                  text="Voir plus"
                   onPress={() => navigation.navigate('ProductsListScreen')}
                 />
               </View>
@@ -117,10 +124,24 @@ const HomeScreen = ({navigation, route}) => {
               {/* products */}
               <View
                 style={[
-                  {width: '100%', flexWrap: 'wrap', flexDirection: 'row'},
+                  {
+                    width: '100%',
+                    flexWrap: 'wrap',
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                  },
                 ]}>
-                {products.map(product => (
-                  <ProductItem product={product} key={product.id} />
+                {products.map((product, index) => (
+                  <ProductItem
+                    index={index}
+                    product={product}
+                    key={product.id}
+                    onPress={() =>
+                      navigation.navigate('ProductDetailsScreen', {
+                        id: product.id,
+                      })
+                    }
+                  />
                 ))}
               </View>
             </>
@@ -140,7 +161,7 @@ const SearchBar = () => {
       style={[
         {
           height: 80,
-          marginBottom: 5,
+          // marginBottom: 5,
           backgroundColor: theme.colors.primary,
           justifyContent: 'center',
           borderBottomLeftRadius: 25,
@@ -153,7 +174,7 @@ const SearchBar = () => {
           style={[
             {
               flexDirection: 'row',
-              width: '80%',
+              width: '90%',
               height: 40,
               borderRadius: 5,
               overflow: 'hidden',
@@ -170,11 +191,12 @@ const SearchBar = () => {
           </View>
           <View style={{width: '80%'}}>
             <TextInput
-              placeholder="search"
+              placeholder="Recherche..."
               style={[
                 {
                   borderRadius: 2,
                   fontSize: 17,
+                  fontFamily: 'ProductSans-Medium',
                   width: '100%',
                   justifyContent: 'center',
                   color: '#0005',
@@ -197,17 +219,17 @@ const ProductItem = ({product, farmerName, onPress}) => {
         {
           borderRadius: 5,
           overflow: 'hidden',
-          marginBottom: 8,
-          marginLeft: 8,
-          width: '47%',
+          marginBottom: 14,
+          marginHorizontal: 8,
+          width: '43%',
           shadowColor: '#000',
-          elevation: 4,
+          elevation: 3,
         },
       ]}>
       <TouchableOpacity
         style={[
           {
-            height: 210,
+            height: 180,
             flex: 1,
           },
         ]}
@@ -215,7 +237,7 @@ const ProductItem = ({product, farmerName, onPress}) => {
         {/* image du products */}
         <Image
           source={{uri: product.poster}}
-          style={{width: '100%', height: 160}}
+          style={{width: '100%', height: 130}}
         />
         {/* les informations a propos du produits */}
         <View
@@ -231,10 +253,11 @@ const ProductItem = ({product, farmerName, onPress}) => {
           <View
             style={[
               {
-                width: '20%',
+                width: '25%',
                 height: '100%',
                 justifyContent: 'center',
                 alignItems: 'center',
+                paddingLeft: 5,
               },
             ]}>
             <Image
@@ -251,13 +274,27 @@ const ProductItem = ({product, farmerName, onPress}) => {
                 flexDirection: 'column',
                 paddingBottom: 2,
                 paddingLeft: 4,
+                justifyContent: 'center',
               },
             ]}>
             <Text
-              style={[style.productInfos, {fontSize: 15, fontWeight: 'bold'}]}>
+              style={[
+                style.productInfos,
+                {fontSize: 15, fontFamily: 'ProductSans-Medium'},
+              ]}>
               {product.name}
             </Text>
-            <Text style={[style.productInfos]}>{farmerName}</Text>
+            {farmerName && (
+              <Text
+                style={[
+                  style.productInfos,
+                  {
+                    fontFamily: 'ProductSans-Medium',
+                  },
+                ]}>
+                {farmerName}
+              </Text>
+            )}
           </View>
         </View>
       </TouchableOpacity>
@@ -278,7 +315,7 @@ const CategoryItem = ({category, onPress}) => {
       style={[
         {
           justifyContent: 'center',
-          justifyContent: 'center',
+          // justifyContent: 'center',
           alignItems: 'center',
           padding: 10,
         },
@@ -289,7 +326,15 @@ const CategoryItem = ({category, onPress}) => {
           source={{uri: category.image}}
         />
       </View>
-      <Text style={[style.categoriesName]}>{category.name}</Text>
+      <Text
+        style={[
+          style.categoriesName,
+          {
+            fontFamily: 'ProductSans-Medium',
+          },
+        ]}>
+        {category.name}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -302,7 +347,15 @@ const CategoryItem = ({category, onPress}) => {
 const MoreButton = ({text, onPress}) => {
   return (
     <TouchableOpacity style={[style.moreButton]} onPress={onPress}>
-      <Text style={[style.moreButtonText]}>{text}</Text>
+      <Text
+        style={[
+          style.moreButtonText,
+          {
+            fontFamily: 'ProductSans-Medium',
+          },
+        ]}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -315,13 +368,14 @@ const style = StyleSheet.create({
   moreButtonText: {
     textAlign: 'right',
     color: theme.colors.primary,
+    fontWeight: 'bold',
   },
   categoriesScroll: {
     height: 90,
   },
   categoriesName: {
-    color: '#0009',
-    fontWeight: '700',
+    color: '#333',
+    // fontWeight: '700',
     fontSize: 13,
   },
   categoriesContainerName: {

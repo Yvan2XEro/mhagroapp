@@ -3,6 +3,7 @@ import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Avatar, Caption, Drawer, Title} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -20,7 +21,7 @@ const DrawerContent = props => {
       style={styles.container}>
       <View style={[styles.header, {marginTop: 2}]}>
         <Avatar.Image
-          size={60}
+          size={45}
           source={{
             uri:
               user && user.photoURL
@@ -29,20 +30,34 @@ const DrawerContent = props => {
           }}
         />
         {user != null ? (
-          <View>
-            <Title style={{color: '#fff'}}>
+          <View style={{marginLeft: 10}}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 15,
+                fontFamily: 'ProductSans-Bold',
+              }}>
               {user.displayName !== null ? user.displayName : user.email}
-            </Title>
-            <Caption style={{color: '#fff'}}>Agronome super qualifie</Caption>
+            </Text>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 12,
+                fontFamily: 'ProductSans-Regular',
+              }}>
+              Agronome super qualifie
+            </Text>
           </View>
         ) : (
-          <View
-            style={{
-              marginLeft: 15,
-              flexDirection: 'column',
-              color: theme.colors.primary,
-            }}>
-            <Title style={{color: '#fff'}}>Anonymous</Title>
+          <View style={{marginLeft: 10}}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 15,
+                fontFamily: 'ProductSans-Bold',
+              }}>
+              Anonyme
+            </Text>
           </View>
         )}
       </View>
@@ -51,9 +66,9 @@ const DrawerContent = props => {
           <DrawerItem
             labelStyle={styles.labelStyle}
             icon={({size}) => (
-              <Ionicons size={size} color="#FFF" name="home-outline" />
+              <MaterialIcons size={size} color="#FFF" name="home" />
             )}
-            label="Home"
+            label="Accueil"
             onPress={() => props.navigation.navigate('HomeApp')}
           />
         </TouchableOpacity>
@@ -63,7 +78,7 @@ const DrawerContent = props => {
               <DrawerItem
                 labelStyle={styles.labelStyle}
                 icon={({size}) => (
-                  <AntDesign size={size} color="#FFF" name="user" />
+                  <MaterialIcons size={size} color="#FFF" name="person" />
                 )}
                 label="My profile"
                 onPress={() =>
@@ -75,7 +90,7 @@ const DrawerContent = props => {
               <DrawerItem
                 labelStyle={styles.labelStyle}
                 icon={({size}) => (
-                  <AntDesign size={size} color="#FFF" name="barschart" />
+                  <MaterialIcons size={size} color="#FFF" name="analytics" />
                 )}
                 label="Product prices"
                 onPress={() =>
@@ -90,9 +105,9 @@ const DrawerContent = props => {
             <DrawerItem
               labelStyle={styles.labelStyle}
               icon={({size}) => (
-                <Entypo size={size} color="#FFF" name="login" />
+                <MaterialIcons size={size} color="#FFF" name="login" />
               )}
-              label="Login && Register"
+              label="Authentification"
               onPress={() => props.navigation.navigate('Authentication')}
             />
           </TouchableOpacity>
@@ -100,17 +115,19 @@ const DrawerContent = props => {
         <TouchableOpacity style={styles.drawerItem}>
           <DrawerItem
             labelStyle={styles.labelStyle}
-            icon={({size}) => <Entypo size={size} color="#FFF" name="help" />}
-            label="Help"
+            icon={({size}) => (
+              <MaterialIcons size={size} color="#FFF" name="contact-support" />
+            )}
+            label="Support"
           />
         </TouchableOpacity>
         <TouchableOpacity style={styles.drawerItem}>
           <DrawerItem
             labelStyle={styles.labelStyle}
             icon={({size}) => (
-              <FontAwesome size={size} color="#FFF" name="exclamation-circle" />
+              <MaterialIcons size={size} color="#FFF" name="info" />
             )}
-            label="About"
+            label="A propos"
           />
         </TouchableOpacity>
         {user && (
@@ -147,6 +164,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingHorizontal: 20,
     alignItems: 'center',
+    flexDirection: 'row',
   },
   menuWrapper: {
     flex: 0.6,
@@ -155,7 +173,6 @@ const styles = StyleSheet.create({
     flex: 0.3,
   },
   drawerItem: {
-    marginHorizontal: 10,
     borderRadius: 5,
     marginTop: 3,
   },

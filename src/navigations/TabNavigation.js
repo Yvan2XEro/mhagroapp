@@ -17,41 +17,25 @@ function TabIcon({focused, name, size, type = null}) {
   if (type === null)
     return (
       <View style={focused ? tabStyle.active : {}}>
-        <Entypo
-          name={name}
-          color={'#fff'}
-          size={size}
-        />
+        <Entypo name={name} color={'#fff'} size={size} />
       </View>
     );
   if (type === 'MaterialCommunityIcons')
     return (
       <View style={focused ? tabStyle.active : {}}>
-        <MaterialCommunityIcons
-          name={name}
-          color={'#fff'}
-          size={size}
-        />
+        <MaterialCommunityIcons name={name} color={'#fff'} size={size} />
       </View>
     );
   if (type === 'MaterialIcons')
     return (
       <View style={focused ? tabStyle.active : {}}>
-        <MaterialIcons
-          name={name}
-          color={'#fff'}
-          size={size}
-        />
+        <MaterialIcons name={name} color={'#fff'} size={size} />
       </View>
     );
   if (type === 'Ionicons')
     return (
       <View style={focused ? tabStyle.active : {}}>
-        <Ionicons
-          name={name}
-          color={'#fff'}
-          size={size}
-        />
+        <Ionicons name={name} color={'#fff'} size={size} />
       </View>
     );
 }
@@ -78,7 +62,12 @@ export default function TabNavigation() {
           tabBarShowLabel: false,
           headerTitle: 'Produits agricoles',
           tabBarIcon: ({focused, size}) => (
-            <TabIcon name="home" focused={focused} size={size*1.3} />
+            <TabIcon
+              type="MaterialIcons"
+              name="home"
+              focused={focused}
+              size={size * 1.1}
+            />
           ),
           headerShown: false,
         }}
@@ -89,7 +78,12 @@ export default function TabNavigation() {
         options={{
           headerTitle: 'Agronomes qualifies',
           tabBarIcon: ({focused, size}) => (
-            <TabIcon name="users" focused={focused} size={size*1.3} />
+            <TabIcon
+              type="MaterialIcons"
+              name="people"
+              focused={focused}
+              size={size * 1.1}
+            />
           ),
           header: ({navigation, route}) => (
             <AppHeader
@@ -107,10 +101,10 @@ export default function TabNavigation() {
           headerTitle: 'Chat',
           tabBarIcon: ({focused, size}) => (
             <TabIcon
-              type="Ionicons"
-              name="chatbox-sharp"
+              type="MaterialIcons"
+              name="question-answer"
               focused={focused}
-              size={size*1.3}
+              size={size * 1.1}
             />
           ),
           header: ({navigation, route}) => (

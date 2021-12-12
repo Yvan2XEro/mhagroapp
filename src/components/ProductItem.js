@@ -1,7 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export default function ProductItem({product, farmerName}) {
+export default function ProductItem({product, onPress}) {
   return (
     <View
       style={[
@@ -16,6 +17,7 @@ export default function ProductItem({product, farmerName}) {
         },
       ]}>
       <TouchableOpacity
+        onPress={onPress}
         style={[
           {
             height: 210,
@@ -69,7 +71,7 @@ export default function ProductItem({product, farmerName}) {
               style={[styles.productInfos, {fontSize: 15, fontWeight: 'bold'}]}>
               {product.name}
             </Text>
-            <Text style={[styles.productInfos]}>{farmerName}</Text>
+            <Text style={[styles.productInfos]}>"Jean Augustin"</Text>
           </View>
         </View>
       </TouchableOpacity>
