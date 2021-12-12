@@ -30,11 +30,23 @@ const DrawerContent = props => {
           }}
         />
         {user != null ? (
-          <View>
-            <Title style={{color: '#fff'}}>
+          <View style={{marginLeft: 10}}>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 15,
+                fontFamily: 'ProductSans-Bold',
+              }}>
               {user.displayName !== null ? user.displayName : user.email}
-            </Title>
-            <Caption style={{color: '#fff'}}>Agronome super qualifie</Caption>
+            </Text>
+            <Text
+              style={{
+                color: '#fff',
+                fontSize: 12,
+                fontFamily: 'ProductSans-Regular',
+              }}>
+              Agronome super qualifie
+            </Text>
           </View>
         ) : (
           <View style={{marginLeft: 10}}>
@@ -44,15 +56,7 @@ const DrawerContent = props => {
                 fontSize: 15,
                 fontFamily: 'ProductSans-Bold',
               }}>
-              Hanniel TSASSE
-            </Text>
-            <Text
-              style={{
-                color: '#fff',
-                fontSize: 12,
-                fontFamily: 'ProductSans-Regular',
-              }}>
-              Agronome super qualifie
+              Anonyme
             </Text>
           </View>
         )}
