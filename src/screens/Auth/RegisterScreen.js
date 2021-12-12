@@ -54,7 +54,7 @@ const RegisterScreen = ({navigation}) => {
               top: -17,
               color: theme.colors.primary,
             }}
-            size={40}
+            size={30}
           />
         </View>
         <TextInput
@@ -84,7 +84,7 @@ const RegisterScreen = ({navigation}) => {
               top: -17,
               color: theme.colors.primary,
             }}
-            size={40}
+            size={30}
           />
         </View>
         <TextInput
@@ -118,7 +118,7 @@ const RegisterScreen = ({navigation}) => {
               top: -17,
               color: theme.colors.primary,
             }}
-            size={40}
+            size={30}
           />
         </View>
         <TextInput
