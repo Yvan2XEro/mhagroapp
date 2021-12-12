@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -11,7 +11,9 @@ import {
 } from 'react-native';
 import {border, theme} from '../../styles';
 import {AppHeader} from '../components/layouts/Headers';
+import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import firestore from '@react-native-firebase/firestore';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -20,6 +22,42 @@ const windowWidth = Dimensions.get('window').width;
  * @returns JSX Element
  */
 const HomeScreen = ({navigation, route}) => {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedCategorie, setSelectedCategorie] = useState(null);
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      const categoriesSnapShot = await firestore()
+        .collection('categories')
+        .get();
+      setCategories(
+        categoriesSnapShot.docs.map(item => ({...item._data, id: item.id})),
+      );
+      const productsSnapShot = await firestore().collection('products').get();
+      setProducts(
+        productsSnapShot.docs.map(item => ({...item._data, id: item.id})),
+      );
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    const subscriber = loadData();
+    return () => subscriber;
+  }, []);
+
+  useEffect(() => {
+    setFilteredProducts(
+      selectedCategorie === null
+        ? products
+        : products.filter(product => product.categoryRef === selectedCategorie),
+    );
+  }, [selectedCategorie, products]);
   return (
     <View style={{height: '100%', backgroundColor: '#fff'}}>
       <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
@@ -34,47 +72,51 @@ const HomeScreen = ({navigation, route}) => {
 
           <SearchBar />
 
-          {/* categories */}
-          <View>
-            <ScrollView
-              contentContainerStyle={[style.categoriesScroll]}
-              showsHorizontalScrollIndicator={false}
-              horizontal={true}>
-              <Categories categoriesName={'categories 1'} />
-              <Categories categoriesName={'categories 2'} />
-              <Categories categoriesName={'categories 3'} />
-              <Categories categoriesName={'categories 4'} />
-            </ScrollView>
-          </View>
+          {!loading ? (
+            <>
+              {/* categories */}
+              <View>
+                <ScrollView
+                  contentContainerStyle={[style.categoriesScroll]}
+                  showsHorizontalScrollIndicator={false}
+                  horizontal={true}>
+                  {categories.map(category => (
+                    <CategoryItem category={category} key={category.id} />
+                  ))}
+                </ScrollView>
+              </View>
 
-          <View
-            style={[
-              {
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                flexDirection: 'row',
-                width: windowWidth,
-                paddingLeft: 6,
-                paddingRight: 6,
-                marginBottom: 7,
-              },
-            ]}>
-            <Text style={[{fontSize: 19, fontWeight: 'bold'}]}>
-              Find Fresh Fruits
-            </Text>
-            <MoreButton text={'View All'} />
-          </View>
+              <View
+                style={[
+                  {
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    flexDirection: 'row',
+                    width: windowWidth,
+                    paddingLeft: 6,
+                    paddingRight: 6,
+                    marginBottom: 7,
+                  },
+                ]}>
+                <Text style={[{fontSize: 19, fontWeight: 'bold'}]}>
+                  Find Fresh Fruits
+                </Text>
+                <MoreButton text={'View All'} />
+              </View>
 
-          {/* products */}
-          <View
-            style={[{width: '100%', flexWrap: 'wrap', flexDirection: 'row'}]}>
-            <Products productName={'product name 1'} farmerName={'Raoul 1'} />
-            <Products productName={'product name 2'} farmerName={'Raoul 2'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-          </View>
+              {/* products */}
+              <View
+                style={[
+                  {width: '100%', flexWrap: 'wrap', flexDirection: 'row'},
+                ]}>
+                {products.map(product => (
+                  <ProductItem product={product} key={product.id} />
+                ))}
+              </View>
+            </>
+          ) : (
+            <Loader />
+          )}
         </View>
       </ScrollView>
     </View>
@@ -137,7 +179,7 @@ const SearchBar = () => {
 };
 
 // produits
-const Products = ({productName, farmerName}) => {
+const ProductItem = ({product, farmerName}) => {
   return (
     <View
       style={[
@@ -160,7 +202,7 @@ const Products = ({productName, farmerName}) => {
         ]}>
         {/* image du products */}
         <Image
-          source={require('./../assets/images/5c933a01240000f7054e356e.jpeg')}
+          source={{uri: product.poster}}
           style={{width: '100%', height: 160}}
         />
         {/* les informations a propos du produits */}
@@ -201,7 +243,7 @@ const Products = ({productName, farmerName}) => {
             ]}>
             <Text
               style={[style.productInfos, {fontSize: 15, fontWeight: 'bold'}]}>
-              {productName}
+              {product.name}
             </Text>
             <Text style={[style.productInfos]}>{farmerName}</Text>
           </View>
@@ -216,7 +258,7 @@ const Products = ({productName, farmerName}) => {
  * @param {String} param0 le nom de la categorie
  * @returns JSX la vue
  */
-const Categories = ({categoriesName}) => {
+const CategoryItem = ({category}) => {
   return (
     <TouchableOpacity
       activeOpacity={1}
@@ -231,10 +273,10 @@ const Categories = ({categoriesName}) => {
       <TouchableOpacity style={[style.categoriesCycle]}>
         <Image
           style={{width: '100%', height: '100%'}}
-          source={require('./../assets/images/b8a7d459d3_127369_difference-fruit-legume.jpg')}
+          source={{uri: category.image}}
         />
       </TouchableOpacity>
-      <Text style={[style.categoriesName]}>{categoriesName}</Text>
+      <Text style={[style.categoriesName]}>{category.name}</Text>
     </TouchableOpacity>
   );
 };
