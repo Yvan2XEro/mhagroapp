@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component, useEffect, useState} from 'react';
 import {
   View,
@@ -14,7 +15,7 @@ import {AppHeader} from '../components/layouts/Headers';
 import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
-import ProductItem from '../components/ProductItem';
+// import ProductItem from '../components/ProductItem';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -149,7 +150,7 @@ const SearchBar = () => {
       style={[
         {
           height: 80,
-          marginBottom: 5,
+          // marginBottom: 5,
           backgroundColor: theme.colors.primary,
           justifyContent: 'center',
           borderBottomLeftRadius: 25,
@@ -287,7 +288,7 @@ const CategoryItem = ({category, onPress}) => {
       style={[
         {
           justifyContent: 'center',
-          justifyContent: 'center',
+          // justifyContent: 'center',
           alignItems: 'center',
           padding: 10,
         },
