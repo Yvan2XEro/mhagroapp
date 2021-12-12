@@ -79,7 +79,7 @@ const DrawerContent = props => {
                 )}
                 label="Product prices"
                 onPress={() =>
-                  props.navigation.navigate('App', {
+                  props.navigation.navigate('ProductsPricesStack', {
                     screen: 'ProductsPricesScreen',
                   })
                 }

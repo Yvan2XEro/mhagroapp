@@ -4,6 +4,7 @@ import React, {useContext} from 'react';
 import Animated from 'react-native-reanimated';
 import {AuthenticationContext} from '../contexts/AuthenticationProvider';
 import {AuthenticationStack} from './AuthenticationStack';
+import ProductsPricesStack from './ProductsPricesStack';
 import TabNavigation from './TabNavigation';
 import UserDetailsStackNavigation from './UserDetailsStackNavigation';
 
@@ -45,6 +46,10 @@ export default function MainContentNavigation(props) {
         <MainStack.Screen
           name="UserDetailsStack"
           component={UserDetailsStackNavigation}
+        />
+        <MainStack.Screen
+          name="ProductsPricesStack"
+          component={ProductsPricesStack}
         />
       </MainStack.Navigator>
     </Animated.View>
