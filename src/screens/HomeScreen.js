@@ -20,6 +20,15 @@ const windowWidth = Dimensions.get('window').width;
  * @returns JSX Element
  */
 const HomeScreen = ({navigation, route}) => {
+  const eventClickLister = () => {
+    navigation.navigate('UserDetailsStack', {
+      screen: 'ProductDetailsScreen',
+      params: {
+        id: 2,
+      },
+    });
+  };
+
   return (
     <View style={{height: '100%', backgroundColor: '#fff'}}>
       <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
@@ -68,12 +77,12 @@ const HomeScreen = ({navigation, route}) => {
           {/* products */}
           <View
             style={[{width: '100%', flexWrap: 'wrap', flexDirection: 'row'}]}>
-            <Products productName={'product name 1'} farmerName={'Raoul 1'} />
-            <Products productName={'product name 2'} farmerName={'Raoul 2'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
-            <Products productName={'product name 3'} farmerName={'Raoul 3'} />
+            <Products productName={'product name 1'} farmerName={'Raoul 1'} onPress={eventClickLister} />
+            <Products productName={'product name 2'} farmerName={'Raoul 2'} onPress={eventClickLister} />
+            <Products productName={'product name 3'} farmerName={'Raoul 3'} onPress={eventClickLister} />
+            <Products productName={'product name 3'} farmerName={'Raoul 3'} onPress={eventClickLister} />
+            <Products productName={'product name 3'} farmerName={'Raoul 3'} onPress={eventClickLister} />
+            <Products productName={'product name 3'} farmerName={'Raoul 3'} onPress={eventClickLister} />
           </View>
         </View>
       </ScrollView>
@@ -81,6 +90,7 @@ const HomeScreen = ({navigation, route}) => {
   );
 };
 
+// search bar
 const SearchBar = () => {
   return (
     <View
@@ -137,7 +147,7 @@ const SearchBar = () => {
 };
 
 // produits
-const Products = ({productName, farmerName}) => {
+const Products = ({productName, farmerName, onPress}) => {
   return (
     <View
       style={[
@@ -157,7 +167,7 @@ const Products = ({productName, farmerName}) => {
             height: 210,
             flex: 1,
           },
-        ]}>
+        ]} onPress={onPress} >
         {/* image du products */}
         <Image
           source={require('./../assets/images/5c933a01240000f7054e356e.jpeg')}
