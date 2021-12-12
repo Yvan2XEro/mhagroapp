@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import PriceSlideItem from './PriceSlideItem';
 
@@ -28,17 +28,16 @@ const ProductPricesSlider = ({onPressInItem}) => {
     },
   ]);
   return (
-    <SafeAreaView style={{flex: 1, paddingTop: 30}}>
+    <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
-        <Carousel
-          layout={'stack'}
-          data={carouselItems}
-          sliderWidth={300}
-          itemWidth={300}
-          slideStyle={{marginBottom: 10}}
-          renderItem={() => <PriceSlideItem onPress={onPressInItem} />}
-          onSnapToItem={index => setActiveIndex(index)}
-        />
+        <ScrollView
+          horizontal={true}
+          pagingEnabled={true}
+          showsHorizontalScrollIndicator={false}>
+          {carouselItems.map(item => (
+            <PriceSlideItem onPress={onPressInItem} />
+          ))}
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

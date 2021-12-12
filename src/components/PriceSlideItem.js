@@ -1,5 +1,11 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {Avatar} from 'react-native-paper';
 import {theme} from './../../styles';
 import {numberFormat} from './../helpers';
@@ -22,18 +28,10 @@ const PriceSlideItem = ({item, index, onPress}) => {
         elevation: 5,
         borderRadius: 5,
         height: 200,
-        marginLeft: 15,
-        marginRight: 15,
+        marginLeft: 5,
+        marginRight: 5,
+        width: Dimensions.get('window').width - 20,
       }}>
-      <View style={[styles.row, styles.header]}>
-        <Avatar.Image
-          source={{
-            uri: 'https://cdn.pixabay.com/photo/2018/05/19/18/05/pineapple-3413953__340.jpg',
-          }}
-          size={45}
-        />
-        <Text style={{color: 'white', fontSize: 16}}>Un super produit</Text>
-      </View>
       <View>
         <View style={styles.row}>
           <Text style={styles.labelText}>Actual price:</Text>
