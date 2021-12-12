@@ -6,6 +6,8 @@ import {BackHeader} from '../components/layouts/Headers';
 import {AuthenticationContext} from '../contexts/AuthenticationProvider';
 import AgronomeDetailsScreen from '../screens/AgronomeDetailsScreen';
 import ProductDetailsScreen from '../screens/ProductDetailsScreen';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
+import ProductsListScreen from '../screens/ProductsListScreen';
 import ProductsPricesScreen from '../screens/ProductsPricesScreen';
 import {AuthenticationStack} from './AuthenticationStack';
 import TabNavigation from './TabNavigation';
@@ -74,6 +76,25 @@ export default function MainContentNavigation(props) {
               />
             ),
           }}
+        />
+        <MainStack.Screen
+          name="ProductsListScreen"
+          component={ProductsListScreen}
+          options={{
+            header: ({navigation, route}) => (
+              <BackHeader
+                navigation={navigation}
+                route={route}
+                title="PRODUCTS"
+                withOptions={true}
+              />
+            ),
+          }}
+        />
+        <MainStack.Screen
+          name="ChatRoomScreen"
+          options={{headerShown: false}}
+          component={ChatRoomScreen}
         />
       </MainStack.Navigator>
     </Animated.View>

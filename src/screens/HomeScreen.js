@@ -14,6 +14,7 @@ import {AppHeader} from '../components/layouts/Headers';
 import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import firestore from '@react-native-firebase/firestore';
+import ProductItem from '../components/ProductItem';
 
 const windowWidth = Dimensions.get('window').width;
 
@@ -81,11 +82,18 @@ const HomeScreen = ({navigation, route}) => {
                   showsHorizontalScrollIndicator={false}
                   horizontal={true}>
                   {categories.map(category => (
-                    <CategoryItem category={category} key={category.id} />
+                    <CategoryItem
+                      category={category}
+                      key={category.id}
+                      onPress={() =>
+                        navigation.navigate('ProductsListScreen', {
+                          id: category.id,
+                        })
+                      }
+                    />
                   ))}
                 </ScrollView>
               </View>
-
               <View
                 style={[
                   {
@@ -101,7 +109,10 @@ const HomeScreen = ({navigation, route}) => {
                 <Text style={[{fontSize: 19, fontWeight: 'bold'}]}>
                   Find Fresh Fruits
                 </Text>
-                <MoreButton text={'View All'} />
+                <MoreButton
+                  text="View All"
+                  onPress={() => navigation.navigate('ProductsListScreen')}
+                />
               </View>
 
               {/* products */}
@@ -268,9 +279,10 @@ const ProductItem = ({product, farmerName, onPress}) => {
  * @param {String} param0 le nom de la categorie
  * @returns JSX la vue
  */
-const CategoryItem = ({category}) => {
+const CategoryItem = ({category, onPress}) => {
   return (
     <TouchableOpacity
+      onPress={onPress}
       activeOpacity={1}
       style={[
         {
@@ -280,12 +292,12 @@ const CategoryItem = ({category}) => {
           padding: 10,
         },
       ]}>
-      <TouchableOpacity style={[style.categoriesCycle]}>
+      <View style={[style.categoriesCycle]}>
         <Image
           style={{width: '100%', height: '100%'}}
           source={{uri: category.image}}
         />
-      </TouchableOpacity>
+      </View>
       <Text style={[style.categoriesName]}>{category.name}</Text>
     </TouchableOpacity>
   );
@@ -296,11 +308,11 @@ const CategoryItem = ({category}) => {
  * @param {String} param0 le texte referent le plus !
  * @returns JSX la vue
  */
-const MoreButton = ({text}) => {
+const MoreButton = ({text, onPress}) => {
   return (
-    <View style={[style.moreButton]}>
+    <TouchableOpacity style={[style.moreButton]} onPress={onPress}>
       <Text style={[style.moreButtonText]}>{text}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -329,9 +341,6 @@ const style = StyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     padding: 6,
-  },
-  productInfos: {
-    color: '#0009',
   },
   categoriesCycle: {
     width: 60,
