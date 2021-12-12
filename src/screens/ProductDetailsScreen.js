@@ -151,74 +151,91 @@ const ProductDetailsScreen = props => {
             scrollEnabled={true}>
             <View style={[{width: '100%', height: '100%'}]}>
               {/* nom du produit */}
-              <View style={[{marginTop: 15, width: '80%', padding: 2}]}>
-                <Text style={[style.bigText]}>Nom du produit</Text>
-              </View>
-              <View style={[{width: '80%', padding: 2}]}>
-                <Text style={[style.smallText]}>{product.name}</Text>
+              <View style={{marginBottom: 7}}>
+                <View style={[{marginTop: 15, width: '80%', padding: 2}]}>
+                  <Text style={[style.smallText]}>Nom du produit</Text>
+                </View>
+                <View style={[{width: '80%', padding: 2}]}>
+                  <Text style={[style.bigText]}>{product.name}</Text>
+                </View>
               </View>
 
               {/* nom de la ville */}
-              <View
-                style={[
-                  {justifyContent: 'flex-start', width: '80%', padding: 2},
-                ]}>
-                <Text style={[style.bigText]}>Ville</Text>
-              </View>
-              <View style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
-                <MaterialIcons name="location-on" color={'#0006'} size={19} />
-                <Text style={[style.smallText, {marginLeft: 4}]}>Dschang</Text>
+              <View style={{marginBottom: 7}}>
+                <View
+                  style={[
+                    {justifyContent: 'flex-start', width: '80%', padding: 2},
+                  ]}>
+                  <Text style={[style.smallText]}>Ville</Text>
+                </View>
+                <View
+                  style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
+                  <MaterialIcons name="location-on" color={'#0006'} size={19} />
+                  <Text style={[style.bigText, {marginLeft: 4}]}>Dschang</Text>
+                </View>
               </View>
 
               {/* nom du marche */}
-              <View
-                style={[
-                  {justifyContent: 'flex-start', width: '80%', padding: 2},
-                ]}>
-                <Text style={[style.bigText]}>Marche</Text>
-              </View>
-              <View style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
-                <Entypo name="shop" color={'#0006'} size={19} />
-                <Text style={[style.smallText, {marginLeft: 4}]}>
-                  Marche Foto
-                </Text>
+              <View style={{marginBottom: 7}}>
+                <View
+                  style={[
+                    {justifyContent: 'flex-start', width: '80%', padding: 2},
+                  ]}>
+                  <Text style={[style.smallText]}>Marche</Text>
+                </View>
+                <View
+                  style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
+                  <Entypo name="shop" color={'#0006'} size={19} />
+                  <Text style={[style.bigText, {marginLeft: 4}]}>
+                    Marche Foto
+                  </Text>
+                </View>
               </View>
 
               {/* unite */}
-              <View
-                style={[
-                  {justifyContent: 'flex-start', width: '80%', padding: 2},
-                ]}>
-                <Text style={[style.bigText]}>Unite</Text>
-              </View>
-              <View style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
-                <Text style={[style.smallText, {marginLeft: 4}]}>Tonne</Text>
+              <View style={{marginBottom: 7}}>
+                <View
+                  style={[
+                    {justifyContent: 'flex-start', width: '80%', padding: 2},
+                  ]}>
+                  <Text style={[style.smallText]}>Unite</Text>
+                </View>
+                <View
+                  style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
+                  <Text style={[style.bigText, {marginLeft: 4}]}>Tonne</Text>
+                </View>
               </View>
 
               {/* prix actuel */}
-              <View
-                style={[
-                  {justifyContent: 'flex-start', width: '80%', padding: 2},
-                ]}>
-                <Text style={[style.bigText]}>Prix actuel</Text>
-              </View>
-              <View style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
-                <Text style={[style.smallText, {marginLeft: 4}]}>
-                  12 000 F cfa
-                </Text>
+              <View style={{marginBottom: 7}}>
+                <View
+                  style={[
+                    {justifyContent: 'flex-start', width: '80%', padding: 2},
+                  ]}>
+                  <Text style={[style.smallText]}>Prix actuel</Text>
+                </View>
+                <View
+                  style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
+                  <Text style={[style.bigText, {marginLeft: 4}]}>
+                    12 000 F cfa
+                  </Text>
+                </View>
               </View>
 
               {/* unite */}
-              <View
-                style={[
-                  {justifyContent: 'flex-start', width: '80%', padding: 2},
-                ]}>
-                <Text style={[style.bigText]}>Mise a jour</Text>
-              </View>
-              <View style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
-                <Text style={[style.smallText, {marginLeft: 4}]}>
-                  02/12/2021, 00:12:24
-                </Text>
+              <View style={{marginBottom: 7}}>
+                <View
+                  style={[
+                    {justifyContent: 'flex-start', width: '80%', padding: 2},
+                  ]}>
+                  <Text style={[style.smallText]}>Mise a jour</Text>
+                </View>
+                <View
+                  style={[{width: '80%', padding: 2, flexDirection: 'row'}]}>
+                  <Text style={[style.bigText, {marginLeft: 4}]}>
+                    02/12/2021, 00:12:24
+                  </Text>
+                </View>
               </View>
             </View>
           </ScrollView>
@@ -238,10 +255,10 @@ const ProductDetailsScreen = props => {
 };
 
 const style = StyleSheet.create({
-  bigText: {color: '#0009', fontSize: 16, fontWeight: 'bold'},
-  smallText: {color: '#0009', fontSize: 16},
+  bigText: {color: '#0009', fontSize: 16, fontFamily: 'ProductSans-Bold'},
+  smallText: {color: '#0009', fontSize: 16, fontFamily: 'ProductSans-Regular'},
   center: {justifyContent: 'center', alignItems: 'center'},
-  btnText: {color: '#fff', fontSize: 19, fontWeight: 'bold'},
+  btnText: {color: '#fff', fontSize: 19, fontFamily: 'ProductSans-Bold'},
   btn: {
     backgroundColor: theme.colors.primary,
     width: '80%',
