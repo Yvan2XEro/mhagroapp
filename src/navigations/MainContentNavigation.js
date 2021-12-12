@@ -5,8 +5,9 @@ import Animated from 'react-native-reanimated';
 import {AuthenticationContext} from '../contexts/AuthenticationProvider';
 import {AuthenticationStack} from './AuthenticationStack';
 import TabNavigation from './TabNavigation';
+import UserDetailsStackNavigation from './UserDetailsStackNavigation';
 
-const ManStack = createNativeStackNavigator();
+const MainStack = createNativeStackNavigator();
 
 export default function MainContentNavigation(props) {
   const {user} = useContext(AuthenticationContext);
@@ -27,36 +28,25 @@ export default function MainContentNavigation(props) {
   };
   return (
     <Animated.View style={[{flex: 1, overflow: 'hidden'}, screenStyle]}>
-      <ManStack.Navigator
+      <MainStack.Navigator
         screenOptions={{
           headerShown: false,
         }}>
-        <ManStack.Screen
+        <MainStack.Screen
           options={{title: 'Home'}}
           name="HomeApp"
           component={TabNavigation}
         />
-        <ManStack.Screen
+        <MainStack.Screen
           options={{title: 'Authentication'}}
           name="Authentication"
           component={AuthenticationStack}
         />
-        {/* <ManStack.Screen name="App" component={AppplicationStack} {...props} /> */}
-        {/* <ManStack.Screen
-          name="PaymentScreen"
-          component={PaymentScreen}
-          options={{
-            headerShown: true,
-            header: ({navigation, route}) => (
-              <AppHeader
-                navigation={navigation}
-                route={route}
-                title="Payment"
-              />
-            ),
-          }}
-        /> */}
-      </ManStack.Navigator>
+        <MainStack.Screen
+          name="UserDetailsStack"
+          component={UserDetailsStackNavigation}
+        />
+      </MainStack.Navigator>
     </Animated.View>
   );
 }

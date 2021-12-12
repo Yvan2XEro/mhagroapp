@@ -4,6 +4,8 @@ import {Button, TextInput} from 'react-native-paper';
 import {theme} from '../../../styles';
 import {AuthenticationContext} from '../../contexts/AuthenticationProvider';
 import {styles} from './LoginScreen';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import Register from '../../assets/Register';
 
 export const regex =
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -32,40 +34,104 @@ const RegisterScreen = ({navigation}) => {
   };
   return (
     <View style={{padding: 20}}>
-      <Text style={styles.title}>Register</Text>
+      <View style={{marginBottom: 15}}>
+        <Register width={400} height={100} style={{alignSelf: 'center'}} />
+      </View>
       {error != '' && <Text style={{color: theme.colors.error}}>{error}</Text>}
-      <TextInput
-        style={styles.input}
-        label="Name"
-        returnKeyType="next"
-        value={name}
-        onChangeText={text => setName(text)}
-        error={name != '' && name.length < 3}
-        errorText="Too short!"
-      />
-      <TextInput
-        style={styles.input}
-        label="Email"
-        returnKeyType="next"
-        value={email}
-        onChangeText={text => setEmail(text)}
-        error={email != '' && !regex.test(email)}
-        errorText={'Invalid email!'}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-      />
-      <TextInput
-        style={styles.input}
-        label="Password"
-        returnKeyType="done"
-        value={password}
-        onChangeText={text => setPassword(text)}
-        error={password != '' && password.length < 6}
-        errorText={'Password is too short!'}
-        secureTextEntry
-      />
+      <View
+        style={{
+          backgroundColor: '#fff',
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}>
+        <View>
+          <MaterialIcons
+            name="person"
+            style={{
+              zIndex: 2,
+              position: 'absolute',
+              left: 10,
+              top: -17,
+              color: theme.colors.primary,
+            }}
+            size={40}
+          />
+        </View>
+        <TextInput
+          style={styles.input}
+          label="Name"
+          returnKeyType="next"
+          value={name}
+          onChangeText={text => setName(text)}
+          error={name != '' && name.length < 3}
+          errorText="Too short!"
+        />
+      </View>
+      <View
+        style={{
+          backgroundColor: '#fff',
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: 10,
+        }}>
+        <View>
+          <MaterialIcons
+            name="email"
+            style={{
+              zIndex: 2,
+              position: 'absolute',
+              left: 10,
+              top: -17,
+              color: theme.colors.primary,
+            }}
+            size={40}
+          />
+        </View>
+        <TextInput
+          style={styles.input}
+          label="Email"
+          returnKeyType="next"
+          value={email}
+          onChangeText={text => setEmail(text)}
+          error={email != '' && !regex.test(email)}
+          errorText={'Invalid email!'}
+          autoCapitalize="none"
+          autoCompleteType="email"
+          textContentType="emailAddress"
+          keyboardType="email-address"
+        />
+      </View>
+      <View
+        style={{
+          backgroundColor: '#fff',
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: 10,
+        }}>
+        <View>
+          <MaterialIcons
+            name="vpn-key"
+            style={{
+              zIndex: 2,
+              position: 'absolute',
+              left: 10,
+              top: -17,
+              color: theme.colors.primary,
+            }}
+            size={40}
+          />
+        </View>
+        <TextInput
+          style={styles.input}
+          label="Password"
+          returnKeyType="done"
+          value={password}
+          onChangeText={text => setPassword(text)}
+          error={password != '' && password.length < 6}
+          errorText={'Password is too short!'}
+          secureTextEntry
+        />
+      </View>
       <Button
         disabled={!regex.test(email) || name.length < 3 || password.length < 4}
         mode="contained"

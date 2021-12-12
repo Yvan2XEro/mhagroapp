@@ -15,6 +15,7 @@ const StartAuthScreen = ({navigation}) => {
       </Button>
       <Button
         mode="outlined"
+        style={{marginTop: 15}}
         onPress={() => navigation.navigate('RegisterScreen')}>
         Sign Up
       </Button>

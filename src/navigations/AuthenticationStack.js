@@ -9,7 +9,6 @@ import {AppHeader} from '../components/layouts/Headers';
 import StartAuthScreen from '../screens/Auth/StartAuthScreen';
 
 const AuthStack = createNativeStackNavigator();
-const AppStack = createNativeStackNavigator();
 
 export const AuthenticationStack = () => {
   const [initializing, setInitializing] = useState(true);
@@ -60,16 +59,3 @@ export const AuthenticationStack = () => {
       </AuthStack.Navigator>
     );
 };
-
-export const AppplicationStack = () => (
-  <AppStack.Navigator
-    screenOptions={{
-      header: ({navigation, route, options}) => (
-        <AppHeader
-          navigation={navigation}
-          route={route}
-          title={options.headerTitle}
-        />
-      ),
-    }}></AppStack.Navigator>
-);
