@@ -9,7 +9,7 @@ import {
 import {Avatar, Card} from 'react-native-paper';
 import {theme} from '../../styles';
 
-const ChatListScreen = () => {
+const ChatListScreen = ({navigation}) => {
   const [favourites, setFavourites] = useState([
     'https://cdn.pixabay.com/photo/2021/08/08/10/03/farmers-6530445__480.jpg',
     'https://cdn.pixabay.com/photo/2016/11/08/05/35/agriculture-1807549__340.jpg',
@@ -46,91 +46,9 @@ const ChatListScreen = () => {
         </Card>
 
         <Card style={{marginTop: 4, padding: 3}}>
-          <TouchableOpacity style={styles.chatItem}>
-            <Avatar.Image
-              source={{
-                uri: 'https://cdn.pixabay.com/photo/2017/07/18/23/54/peasants-2517476__340.jpg',
-              }}
-            />
-            <View
-              style={{
-                marginLeft: 5,
-                borderBottomWidth: 1,
-                borderBottomColor: 'gray',
-              }}>
-              <View>
-                <Text>Elystin Renoi</Text>
-                <Text style={{fontSize: 9}}>
-                  Specialiste dans les elevages de porcs
-                </Text>
-              </View>
-            </View>
-            <Text style={{marginLeft: 'auto'}}>08:36AM</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.chatItem}>
-            <Avatar.Image
-              source={{
-                uri: 'https://cdn.pixabay.com/photo/2017/07/18/23/54/peasants-2517476__340.jpg',
-              }}
-            />
-            <View
-              style={{
-                marginLeft: 5,
-                borderBottomWidth: 1,
-                borderBottomColor: 'gray',
-              }}>
-              <View>
-                <Text>Elystin Renoi</Text>
-                <Text style={{fontSize: 9}}>
-                  Specialiste dans les elevages de porcs
-                </Text>
-              </View>
-            </View>
-            <Text style={{marginLeft: 'auto'}}>08:36AM</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.chatItem}>
-            <Avatar.Image
-              source={{
-                uri: 'https://cdn.pixabay.com/photo/2017/07/18/23/54/peasants-2517476__340.jpg',
-              }}
-            />
-            <View
-              style={{
-                marginLeft: 5,
-                borderBottomWidth: 1,
-                borderBottomColor: 'gray',
-              }}>
-              <View>
-                <Text>Elystin Renoi</Text>
-                <Text style={{fontSize: 9}}>
-                  Specialiste dans les elevages de porcs
-                </Text>
-              </View>
-            </View>
-            <Text style={{marginLeft: 'auto'}}>08:36AM</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.chatItem}>
-            <Avatar.Image
-              source={{
-                uri: 'https://cdn.pixabay.com/photo/2017/07/18/23/54/peasants-2517476__340.jpg',
-              }}
-            />
-            <View
-              style={{
-                marginLeft: 5,
-                borderBottomWidth: 1,
-                borderBottomColor: 'gray',
-              }}>
-              <View>
-                <Text>Elystin Renoi</Text>
-                <Text style={{fontSize: 9}}>
-                  Specialiste dans les elevages de porcs
-                </Text>
-              </View>
-            </View>
-            <Text style={{marginLeft: 'auto'}}>08:36AM</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.chatItem}>
+          <TouchableOpacity
+            style={styles.chatItem}
+            onPress={() => navigation.navigate('ChatRoomScreen')}>
             <Avatar.Image
               source={{
                 uri: 'https://cdn.pixabay.com/photo/2017/07/18/23/54/peasants-2517476__340.jpg',
