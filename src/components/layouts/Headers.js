@@ -19,7 +19,7 @@ export const AppHeader = ({navigation, route, title}) => {
         <Text style={[styles.headerTitle, GStyles.textWhite]}>{title}</Text>
       </View>
       <View style={{marginLeft: 'auto'}}>
-        <MaterialIcons name="notifications" size={30} color="#fff" />
+        <MaterialIcons name="notifications" size={27} color="#fff" />
       </View>
     </View>
   );

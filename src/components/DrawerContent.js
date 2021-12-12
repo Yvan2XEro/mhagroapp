@@ -3,6 +3,7 @@ import React, {useContext} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {Avatar, Caption, Drawer, Title} from 'react-native-paper';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -51,7 +52,7 @@ const DrawerContent = props => {
           <DrawerItem
             labelStyle={styles.labelStyle}
             icon={({size}) => (
-              <Ionicons size={size} color="#FFF" name="home-outline" />
+              <MaterialIcons size={size} color="#FFF" name="home" />
             )}
             label="Home"
             onPress={() => props.navigation.navigate('HomeApp')}
@@ -63,7 +64,7 @@ const DrawerContent = props => {
               <DrawerItem
                 labelStyle={styles.labelStyle}
                 icon={({size}) => (
-                  <AntDesign size={size} color="#FFF" name="user" />
+                  <MaterialIcons size={size} color="#FFF" name="person" />
                 )}
                 label="My profile"
                 onPress={() =>
@@ -75,7 +76,7 @@ const DrawerContent = props => {
               <DrawerItem
                 labelStyle={styles.labelStyle}
                 icon={({size}) => (
-                  <AntDesign size={size} color="#FFF" name="barschart" />
+                  <MaterialIcons size={size} color="#FFF" name="analytics" />
                 )}
                 label="Product prices"
                 onPress={() =>
@@ -90,7 +91,7 @@ const DrawerContent = props => {
             <DrawerItem
               labelStyle={styles.labelStyle}
               icon={({size}) => (
-                <Entypo size={size} color="#FFF" name="login" />
+                <MaterialIcons size={size} color="#FFF" name="login" />
               )}
               label="Login && Register"
               onPress={() => props.navigation.navigate('Authentication')}
@@ -100,7 +101,9 @@ const DrawerContent = props => {
         <TouchableOpacity style={styles.drawerItem}>
           <DrawerItem
             labelStyle={styles.labelStyle}
-            icon={({size}) => <Entypo size={size} color="#FFF" name="help" />}
+            icon={({size}) => (
+              <MaterialIcons size={size} color="#FFF" name="contact-support" />
+            )}
             label="Help"
           />
         </TouchableOpacity>
@@ -108,7 +111,7 @@ const DrawerContent = props => {
           <DrawerItem
             labelStyle={styles.labelStyle}
             icon={({size}) => (
-              <FontAwesome size={size} color="#FFF" name="exclamation-circle" />
+              <MaterialIcons size={size} color="#FFF" name="info" />
             )}
             label="About"
           />
