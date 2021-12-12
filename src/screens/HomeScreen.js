@@ -9,7 +9,7 @@ import {
   Dimensions,
   TextInput,
 } from 'react-native';
-import {theme} from '../../styles';
+import {border, theme} from '../../styles';
 import {AppHeader} from '../components/layouts/Headers';
 import Loader from '../components/Loader';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -121,15 +121,7 @@ const HomeScreen = ({navigation, route}) => {
                   {width: '100%', flexWrap: 'wrap', flexDirection: 'row'},
                 ]}>
                 {products.map(product => (
-                  <ProductItem
-                    product={product}
-                    key={product.id}
-                    onPress={() => {
-                      navigation.navigate('ProductDetailsScreen', {
-                        id: product.id,
-                      });
-                    }}
-                  />
+                  <ProductItem product={product} key={product.id} />
                 ))}
               </View>
             </>
