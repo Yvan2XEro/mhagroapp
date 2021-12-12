@@ -36,7 +36,15 @@ const ProductsListScreen = ({route}) => {
     <ScrollView scrollEnabled={true} showsVerticalScrollIndicator={false}>
       <View style={[{flexWrap: 'wrap', flexDirection: 'row'}]}>
         {products.map(product => (
-          <ProductItem product={product} key={product.id} />
+          <ProductItem
+            product={product}
+            key={product.id}
+            onPress={() =>
+              navigation.navigate('ProductDetailsScreen', {
+                id: product.id,
+              })
+            }
+          />
         ))}
       </View>
     </ScrollView>
