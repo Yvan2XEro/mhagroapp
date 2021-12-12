@@ -31,7 +31,7 @@ const ProductPricesSlider = ({onPressInItem}) => {
     <SafeAreaView style={{flex: 1, paddingTop: 30}}>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'center'}}>
         <Carousel
-          layout={'default'}
+          layout={'stack'}
           data={carouselItems}
           sliderWidth={300}
           itemWidth={300}

@@ -49,7 +49,7 @@ export default function MainContentNavigation(props) {
           component={TabNavigation}
         />
         <MainStack.Screen
-          options={{title: 'Authentication'}}
+          options={{title: 'Authentication', headerShown: false}}
           name="Authentication"
           component={AuthenticationStack}
         />
