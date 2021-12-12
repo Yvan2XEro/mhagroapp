@@ -4,7 +4,7 @@ import ProductItem from '../components/ProductItem';
 import firestore from '@react-native-firebase/firestore';
 import Loader from '../components/Loader';
 
-const ProductsListScreen = ({route}) => {
+const ProductsListScreen = ({route, navigation}) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const loadData = async () => {
