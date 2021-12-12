@@ -76,7 +76,7 @@ const LoginScreen = ({navigation}) => {
               top: -17,
               color: theme.colors.primary,
             }}
-            size={40}
+            size={30}
           />
         </View>
         <TextInput
@@ -111,7 +111,7 @@ const LoginScreen = ({navigation}) => {
               top: -17,
               color: theme.colors.primary,
             }}
-            size={40}
+            size={30}
           />
         </View>
         <TextInput
@@ -187,11 +187,13 @@ export const styles = StyleSheet.create({
     color: theme.colors.primary,
   },
   input: {
-    backgroundColor: '#fff',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    backgroundColor: '#eee',
+    borderRadius: 10,
     flex: 1,
     paddingLeft: 38,
+    height: 50,
+    borderWidth: 1 / 1.1,
+    borderColor: '#000',
   },
   title: {fontSize: 31, fontWeight: 'bold', color: theme.colors.primary},
 });
