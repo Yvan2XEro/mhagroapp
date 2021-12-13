@@ -48,11 +48,13 @@ export default function MainContentNavigation(props) {
           name="HomeApp"
           component={TabNavigation}
         />
-        <MainStack.Screen
-          options={{title: 'Authentication', headerShown: false}}
-          name="Authentication"
-          component={AuthenticationStack}
-        />
+        {!user && (
+          <MainStack.Screen
+            options={{title: 'Authentication', headerShown: false}}
+            name="Authentication"
+            component={AuthenticationStack}
+          />
+        )}
         <MainStack.Screen
           name="AgronomeDetailsScreen"
           component={AgronomeDetailsScreen}
