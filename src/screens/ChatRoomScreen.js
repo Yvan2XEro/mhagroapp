@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
   KeyboardAvoidingView,
+  Keyboard,
 } from 'react-native';
 import {Avatar, Card} from 'react-native-paper';
 import {theme} from '../../styles';
@@ -60,7 +61,9 @@ const ChatRoomScreen = ({navigation, route}) => {
         <Text style={{color: 'white'}}>online</Text>
       </View>
       <View>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          style={{marginBottom: 150}}
+          showsVerticalScrollIndicator={false}>
           {messages.map(m => (
             <TouchableOpacity
               style={[
@@ -89,6 +92,7 @@ const ChatRoomScreen = ({navigation, route}) => {
         style={{
           position: 'absolute',
           bottom: 0,
+          height: 80,
           margin: 5,
           marginBottom: 0,
           padding: 5,
@@ -102,21 +106,21 @@ const ChatRoomScreen = ({navigation, route}) => {
           style={[styles.textInput]}
           placeholder="Type message..."
           value={newMessage}
-          onChange={text => setNewMessage(text)}
+          onChangeText={text => setNewMessage(text)}
         />
         <TouchableOpacity
           style={{flex: 0.2}}
           onPress={() => {
-            console.log(newMessage);
             if (newMessage.length > 0) {
               setMessages([
                 ...messages,
                 {
                   id: messages.length,
                   message: newMessage,
-                  data: moment(new Date()).format('hh:mm A'),
+                  date: moment(new Date()).format('hh:mm A'),
                 },
               ]);
+              Keyboard.dismiss();
               setNewMessage('');
             }
           }}>

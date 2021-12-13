@@ -23,7 +23,7 @@ const ChatListScreen = ({navigation}) => {
       <ScrollView>
         <Card style={{padding: 5}}>
           <View style={{marginLeft: 5}}>
-            <Text>ONLINE Users</Text>
+            <Text>ONLINE USERS</Text>
           </View>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {favourites.map((favorite, i) => (
