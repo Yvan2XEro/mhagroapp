@@ -34,8 +34,8 @@ const ProductPricesSlider = ({onPressInItem}) => {
           horizontal={true}
           pagingEnabled={true}
           showsHorizontalScrollIndicator={false}>
-          {carouselItems.map(item => (
-            <PriceSlideItem onPress={onPressInItem} />
+          {carouselItems.map((item, i) => (
+            <PriceSlideItem onPress={onPressInItem} key={i} />
           ))}
         </ScrollView>
       </View>

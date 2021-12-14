@@ -17,7 +17,7 @@ const RegisterScreen = ({navigation}) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const {setUser, login, register} = useContext(AuthenticationContext);
+  const {login, register} = useContext(AuthenticationContext);
 
   const handleSignUp = () => {
     setError('');
