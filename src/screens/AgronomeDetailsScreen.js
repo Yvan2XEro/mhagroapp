@@ -75,7 +75,7 @@ const AgronomeDetailsScreen = ({route, navigation}) => {
             </View>
             <View style={styles.contactWrapper}>
               <View style={[styles.contactItem, GStyles.flexRow]}>
-                <View style={{marginLeft: 40}}></View>
+                <View style={{marginLeft: 40}} />
                 <View
                   style={{
                     marginLeft: 10,

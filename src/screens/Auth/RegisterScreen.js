@@ -27,8 +27,9 @@ const RegisterScreen = ({navigation}) => {
         login({email, password});
       })
       .catch(error => {
-        if (error.code === 'auth/email-already-in-use')
+        if (error.code === 'auth/email-already-in-use') {
           setError('That email address is already in use!');
+        }
       })
       .then(() => setLoading(false));
   };

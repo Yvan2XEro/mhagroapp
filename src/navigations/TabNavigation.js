@@ -14,30 +14,34 @@ import {AppHeader} from '../components/layouts/Headers';
 const windowWidth = Dimensions.get('window').width;
 
 function TabIcon({focused, name, size, type = null}) {
-  if (type === null)
+  if (type === null) {
     return (
       <View style={focused ? tabStyle.active : {}}>
         <Entypo name={name} color={'#fff'} size={size} />
       </View>
     );
-  if (type === 'MaterialCommunityIcons')
+  }
+  if (type === 'MaterialCommunityIcons') {
     return (
       <View style={focused ? tabStyle.active : {}}>
         <MaterialCommunityIcons name={name} color={'#fff'} size={size} />
       </View>
     );
-  if (type === 'MaterialIcons')
+  }
+  if (type === 'MaterialIcons') {
     return (
       <View style={focused ? tabStyle.active : {}}>
         <MaterialIcons name={name} color={'#fff'} size={size} />
       </View>
     );
-  if (type === 'Ionicons')
+  }
+  if (type === 'Ionicons') {
     return (
       <View style={focused ? tabStyle.active : {}}>
         <Ionicons name={name} color={'#fff'} size={size} />
       </View>
     );
+  }
 }
 
 const AppTab = createBottomTabNavigator();

@@ -150,7 +150,7 @@ const ChatListScreen = ({navigation}) => {
 };
 
 const OneChatContact = ({}) => {
-  return <View></View>;
+  return <View />;
 };
 const styles = StyleSheet.create({
   chatItem: {

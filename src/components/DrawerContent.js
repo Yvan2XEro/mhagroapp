@@ -150,7 +150,7 @@ const DrawerContent = props => {
           </TouchableOpacity>
         )}
       </Drawer.Section>
-      <View style={styles.footer}></View>
+      <View style={styles.footer} />
     </LinearGradient>
   );
 };

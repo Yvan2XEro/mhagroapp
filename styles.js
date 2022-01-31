@@ -32,4 +32,4 @@ export const theme = {
 export const border = {
   borderWidth: 1,
   borderColor: '#000',
-}
+};

@@ -16,7 +16,9 @@ export const AuthenticationStack = () => {
 
   function onAuthStateChanged(user) {
     setUser(user);
-    if (initializing) setInitializing(false);
+    if (initializing) {
+      setInitializing(false);
+    }
   }
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
@@ -27,8 +29,10 @@ export const AuthenticationStack = () => {
     return () => subscriber; // unsubscribe on unmount
   }, []);
 
-  if (initializing) return null;
-  if (!user)
+  if (initializing) {
+    return null;
+  }
+  if (!user) {
     return (
       <AuthStack.Navigator
         initialRouteName="AuthenticationHome"
@@ -58,4 +62,5 @@ export const AuthenticationStack = () => {
         />
       </AuthStack.Navigator>
     );
+  }
 };

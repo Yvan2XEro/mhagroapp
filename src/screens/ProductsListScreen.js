@@ -11,13 +11,14 @@ const ProductsListScreen = ({route, navigation}) => {
     setLoading(true);
     try {
       let productsSnapShot = null;
-      if (!route.params || !route.params.id)
+      if (!route.params || !route.params.id) {
         productsSnapShot = await firestore().collection('products').get();
-      else
+      } else {
         productsSnapShot = await firestore()
           .collection('products')
           .where('categoryRef', '==', route.params.id)
           .get();
+      }
       setProducts(
         productsSnapShot.docs.map(item => ({...item.data(), id: item.id})),
       );

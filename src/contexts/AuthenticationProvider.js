@@ -42,7 +42,9 @@ const AuthenticationProvider = ({children}) => {
         },
         logout: async () => {
           try {
-            if (method === GOOGLE) await GoogleSignin.signOut();
+            if (method === GOOGLE) {
+              await GoogleSignin.signOut();
+            }
             await auth().signOut();
           } catch (error) {
             console.log(error);
